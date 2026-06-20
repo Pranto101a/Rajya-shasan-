@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0e14" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0e14'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' fill='%23e8c46a'%3E%E2%99%9B%3C/text%3E%3C/svg%3E" />
+  <title>রাজ্যশাসন · Rajjosashon</title>
+  <meta name="description" content="রাজ্যশাসন — ২ জনের কৌশলের কার্ড গেম। বটের সাথে, একই ডিভাইসে, অথবা অনলাইনে খেলো।" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- animated background -->
+  <div id="bg-layer">
+    <div id="bg-img"></div>
+    <div id="bg-vignette"></div>
+    <canvas id="particles"></canvas>
+  </div>
+
+  <div id="app">
+    <!-- ===== MENU ===== -->
+    <section id="menu" class="screen">
+      <div class="brand">
+        <div class="crest">♛</div>
+        <h1 class="title">রাজ্যশাসন</h1>
+        <div class="subtitle">R A J J O S A S H O N</div>
+      </div>
+
+      <div class="menu-card panel">
+        <button class="btn primary" id="btn-bot">
+          <span class="ico">🤖</span>
+          <span>বটের সাথে খেলো<span class="desc">একা অনুশীলন · সহজ / মাঝারি / কঠিন</span></span>
+        </button>
+        <button class="btn" id="btn-local">
+          <span class="ico">👥</span>
+          <span>একই ডিভাইসে ২ জন<span class="desc">পাস-অ্যান্ড-প্লে · একসাথে বসে</span></span>
+        </button>
+        <button class="btn" id="btn-online">
+          <span class="ico">🌐</span>
+          <span>অনলাইনে খেলো<span class="desc">রুম কোড দিয়ে বন্ধুর সাথে</span></span>
+        </button>
+        <button class="btn ghost" id="btn-rules">
+          <span class="ico">📜</span>
+          <span>নিয়মাবলি<span class="desc">কীভাবে খেলতে হয়</span></span>
+        </button>
+      </div>
+      <div class="foot">৭ রাজা · ৪ অ্যাকশন · ১১★ অথবা ৪👑 = জয়</div>
+    </section>
+
+    <!-- ===== GAME (rendered by ui.js) ===== -->
+    <section id="game" class="screen hidden"></section>
+  </div>
+
+  <!-- PeerJS: serverless online (works on GitHub Pages / static hosting) -->
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <!-- Socket.IO client: served by the bundled Node server. 404s harmlessly on
+       static hosting, in which case online play automatically uses PeerJS. -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- game modules -->
+  <script src="js/engine.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/online.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
