@@ -1,0 +1,272 @@
+/* ===================================================================
+   রাজ্যশাসন — Rajjosashon  •  Styles
+   Dark regal Bengal/Mughal theme · gold accents · cinematic
+   =================================================================== */
+:root{
+  --gold:#e8c46a; --gold-2:#b8862f; --gold-deep:#7a5a1e;
+  --ink:#0c0e14; --ink-2:#141824; --panel:#1a1f2eee; --panel-2:#222840;
+  --teal:#2bd0d8; --crimson:#e0455c; --green:#37c98a;
+  --text:#f3ead2; --muted:#a9a890; --line:#3a3320;
+  --shadow:0 10px 40px rgba(0,0,0,.55);
+  --radius:16px;
+  --card-w:clamp(58px,15vw,96px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  margin:0;color:var(--text);
+  font-family:'Hind Siliguri','Noto Sans Bengali',system-ui,Segoe UI,Roboto,sans-serif;
+  background:#05060a;overflow:hidden;user-select:none;
+}
+button{font-family:inherit;cursor:pointer}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:.5px}
+.hidden{display:none !important}
+
+/* ---------- animated background ---------- */
+#bg-layer{position:fixed;inset:0;z-index:0;overflow:hidden;background:#04050a}
+#bg-img{position:absolute;inset:-6%;background:center/cover no-repeat;
+  background-image:url('../assets/img/bg_throne_hall.jpeg');
+  filter:brightness(.55) saturate(1.05) contrast(1.05);
+  transform:scale(1.08);transition:transform .4s ease-out;will-change:transform}
+#bg-vignette{position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 35%,transparent 35%,rgba(2,3,8,.55) 75%,rgba(2,3,8,.92) 100%)}
+#particles{position:absolute;inset:0;pointer-events:none}
+
+/* ---------- generic layout ---------- */
+#app{position:relative;z-index:2;height:100dvh;display:flex;flex-direction:column}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;
+  animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- panels & buttons ---------- */
+.panel{background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  border:1px solid #3c3a55;border-radius:var(--radius);box-shadow:var(--shadow);
+  backdrop-filter:blur(8px)}
+.btn{position:relative;border:1px solid var(--gold-2);
+  background:linear-gradient(180deg,#2a2233,#1a1622);
+  color:var(--gold);padding:14px 22px;border-radius:12px;font-size:1.05rem;font-weight:700;
+  box-shadow:0 4px 0 #00000055, inset 0 1px 0 #ffffff14;transition:transform .12s,box-shadow .12s,filter .12s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #00000055}
+.btn.primary{background:linear-gradient(180deg,#caa44e,#9a7320);color:#241a06;border-color:#f0d68a;
+  text-shadow:0 1px 0 #ffe9a8}
+.btn.ghost{background:#ffffff0d;color:var(--text);border-color:#ffffff22}
+.btn.sm{padding:8px 14px;font-size:.9rem;border-radius:10px}
+.btn:disabled{opacity:.4;cursor:not-allowed;filter:grayscale(.5)}
+
+/* ---------- MENU ---------- */
+#menu{align-items:center;justify-content:center;text-align:center;gap:0;padding:24px}
+.brand{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:6px}
+.crest{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font-size:2.4rem;
+  background:radial-gradient(circle at 50% 35%,#3a2f12,#0e0b06);
+  border:2px solid var(--gold);box-shadow:0 0 36px #e8c46a55, inset 0 0 18px #00000088;
+  animation:floaty 5s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-7px)}}
+.title{font-size:clamp(2.4rem,9vw,4.2rem);line-height:1;
+  background:linear-gradient(180deg,#fff3cf,#e8c46a 45%,#9a7320);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 2px 30px #e8c46a40;font-weight:800}
+.subtitle{color:var(--muted);font-size:1rem;letter-spacing:3px;margin-top:2px}
+.menu-card{margin-top:26px;padding:22px;width:min(440px,92vw);display:flex;flex-direction:column;gap:12px}
+.menu-card .btn{width:100%;display:flex;align-items:center;gap:12px;justify-content:flex-start}
+.menu-card .btn .ico{font-size:1.4rem;width:30px;text-align:center}
+.menu-card .btn .desc{display:block;font-size:.72rem;font-weight:500;color:#cdbf9a;letter-spacing:.3px}
+.foot{margin-top:18px;color:#6f6c58;font-size:.74rem}
+
+/* ---------- sub-dialogs in menu ---------- */
+.dialog{width:min(440px,92vw);padding:22px;display:flex;flex-direction:column;gap:14px;text-align:left}
+.dialog h2{font-size:1.4rem;color:var(--gold);text-align:center}
+.dialog .row{display:flex;gap:10px;flex-wrap:wrap}
+.dialog .row .btn{flex:1}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.85rem;color:var(--muted)}
+.field input{padding:12px 14px;border-radius:10px;border:1px solid #4a4665;background:#0e1018;color:var(--text);
+  font-size:1.4rem;letter-spacing:6px;text-align:center;font-weight:700;text-transform:uppercase}
+.code-display{font-size:2.2rem;letter-spacing:10px;text-align:center;color:var(--gold);
+  background:#0e1018;border:1px dashed var(--gold-2);border-radius:12px;padding:14px;font-weight:800}
+.status{font-size:.9rem;color:var(--muted);text-align:center;min-height:1.2em}
+.status.err{color:var(--crimson)}
+.status.ok{color:var(--green)}
+
+/* ---------- GAME BOARD ---------- */
+#game{display:flex;flex-direction:column;min-height:100dvh;height:100dvh;padding:8px;gap:6px;overflow-y:auto;overflow-x:hidden}
+.topbar,.opp,.player{flex-shrink:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 8px}
+.topbar .who{font-size:.8rem;color:var(--muted)}
+.scorepill{display:flex;align-items:center;gap:8px;font-size:.82rem;background:#0e1018aa;border:1px solid #3a3650;
+  padding:5px 10px;border-radius:20px}
+.scorepill b{color:var(--gold)}
+
+/* kings strip — single row, horizontally scrollable so kings stay BIG on phones */
+.kings{display:flex; flex-wrap:nowrap; gap:10px; padding:6px 4px 4px; overflow-x:auto; overflow-y:hidden;
+  -webkit-overflow-scrolling:touch; scrollbar-width:thin; flex-shrink:0; scroll-snap-type:x proximity;}
+.kings::-webkit-scrollbar{height:5px}
+.kings::-webkit-scrollbar-thumb{background:var(--gold-2);border-radius:3px}
+.king{position:relative; flex:0 0 auto; border-radius:12px; width: clamp(82px, 22vw, 120px);
+  background:transparent; transition:transform .2s; display:flex; flex-direction:column; gap:5px; scroll-snap-align:center;}
+.king-img-wrap{position:relative; width:100%; aspect-ratio:3/4; border-radius:10px; overflow:hidden;
+  border:2px solid #2c2a3e; background:#0a0c12; box-shadow:0 4px 14px #00000066;}
+.king-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.92)}
+.king .kval{position:absolute;top:3px;left:3px;background:#000b;color:var(--gold);
+  font-size:.82rem;font-weight:800;border-radius:6px;padding:1px 6px;border:1px solid var(--gold-2)}
+.king .kname{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:.74rem;color:#fff;
+  background:linear-gradient(0deg,#000e,transparent); padding:14px 2px 3px 2px;
+  text-shadow:0 1px 3px #000; font-weight:700;}
+.king.owned-0 .king-img-wrap {border-color:var(--teal);box-shadow:0 0 16px #2bd0d877}
+.king.owned-1 .king-img-wrap {border-color:var(--crimson);box-shadow:0 0 16px #e0455c77}
+.king .owner-flag{position:absolute;top:3px;right:3px;font-size:.85rem;border-radius:6px;padding:1px 4px;font-weight:800}
+.king.owned-0 .owner-flag{background:var(--teal);color:#04201f}
+.king.owned-1 .owner-flag{background:var(--crimson);color:#2a0309}
+.king.flip .king-img-wrap{animation:kflip .6s ease}
+@keyframes kflip{0%{transform:rotateY(0)}50%{transform:rotateY(90deg) scale(1.05)}100%{transform:rotateY(0)}}
+
+/* face-up committed item cards shown around each king (who got what) */
+.king-op-cards, .king-me-cards{display:flex; flex-wrap:wrap; gap:3px; min-height:18px; justify-content:center;}
+.king-op-cards .mini-kcard, .king-me-cards .mini-kcard{width:15px; height:21px; border-radius:3px;
+  border:1px solid #fff8; box-shadow:0 1px 3px #000;}
+.mini-kcard.pc0{background:var(--teal)}
+.mini-kcard.pc1{background:var(--crimson)}
+
+
+/* opponent row */
+.opp{display:flex;align-items:center;gap:10px;justify-content:center;padding:4px}
+.mini-hand{display:flex}
+.mini-hand .cb{width:26px;height:38px;margin-left:-12px;border-radius:5px;
+  background:linear-gradient(135deg,#2a2140,#120e22);border:1px solid var(--gold-2);
+  box-shadow:0 2px 6px #0008}
+.tokens{display:flex;gap:5px}
+.tok{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;
+  border:2px solid var(--gold-2);background:radial-gradient(circle at 40% 35%,#3a2f12,#0e0b06);color:var(--gold);
+  transition:transform .15s,filter .2s}
+.tok.used{filter:grayscale(1) brightness(.5);border-color:#444}
+.tok.legal{cursor:pointer;box-shadow:0 0 10px #e8c46a66}
+.tok.legal:hover{transform:scale(1.12)}
+.tok.sel{background:var(--gold);color:#241a06;transform:scale(1.15)}
+
+/* center stage */
+.stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;min-height:0}
+.stage-inner{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:10px;
+  max-width:560px;width:100%}
+.deck-info{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.85rem}
+.deck-pile{width:38px;height:54px;border-radius:6px;background:linear-gradient(135deg,#2a2140,#120e22);
+  border:1px solid var(--gold-2);box-shadow:2px 2px 0 #1a1530,4px 4px 0 #120e22}
+.message{font-size:1rem;color:var(--gold);min-height:1.4em;font-weight:600;text-shadow:0 2px 10px #000}
+.prompt{font-size:.86rem;color:var(--muted)}
+
+/* offered cards (pick) */
+.pool{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.confirm-bar{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+
+/* player hand */
+.player{padding:6px 4px 8px}
+.player .phead{display:flex;justify-content:space-between;align-items:center;padding:0 6px 4px;font-size:.8rem;color:var(--muted)}
+.hand{display:flex;justify-content:center;align-items:flex-end;min-height:calc(var(--card-w)*1.34);
+  gap:4px;flex-wrap:wrap}
+
+/* a card */
+.card{width:var(--card-w);aspect-ratio:3/4;border-radius:9px;overflow:hidden;position:relative;
+  border:2px solid #2c2a3e;background:#0a0c12;box-shadow:0 5px 14px #00000088;
+  transition:transform .18s,box-shadow .2s,border-color .2s;animation:deal .4s ease both}
+@keyframes deal{from{opacity:0;transform:translateY(26px) rotate(-6deg)}to{opacity:1;transform:none}}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .ctag{position:absolute;bottom:0;left:0;right:0;font-size:.58rem;text-align:center;color:#fff;
+  background:linear-gradient(0deg,#000e,transparent);padding:6px 2px 2px}
+.card .cv{position:absolute;top:2px;left:2px;font-size:.6rem;font-weight:800;color:var(--gold);
+  background:#000a;border-radius:5px;padding:0 4px;border:1px solid var(--gold-2)}
+.card.selectable{cursor:pointer}
+.card.selectable:hover{transform:translateY(-10px);box-shadow:0 12px 22px #000a}
+.card.sel{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 20px #e8c46a88;transform:translateY(-12px)}
+.card .setbadge{position:absolute;top:2px;right:2px;width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;font-size:.72rem;font-weight:800;color:#241a06}
+.card.setA .setbadge{background:var(--teal)}
+.card.setB .setbadge{background:#f0a93a}
+.card.faded{opacity:.42;filter:grayscale(.4)}
+
+/* card back */
+.card.back{display:grid;place-items:center;background:
+  repeating-linear-gradient(45deg,#241c3a,#241c3a 6px,#1a1430 6px,#1a1430 12px);}
+.card.back::after{content:'♛';font-size:1.6rem;color:#e8c46a55}
+
+/* ---------- overlays ---------- */
+.overlay{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;
+  background:#04050ccc;backdrop-filter:blur(6px);animation:fade .3s ease;padding:16px}
+.sheet{width:min(560px,94vw);max-height:90dvh;overflow:auto;padding:22px}
+.sheet h2{color:var(--gold);text-align:center;margin-bottom:6px;font-size:1.6rem}
+.result-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:14px 0}
+.rg{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;border:2px solid #2c2a3e}
+.rg img{width:100%;height:100%;object-fit:cover}
+.rg .tally{position:absolute;inset:auto 0 0 0;display:flex;justify-content:space-between;font-size:.66rem;
+  padding:2px 3px;background:#000c}
+.rg .tally .me{color:var(--teal)} .rg .tally .op{color:var(--crimson)}
+.rg.win-0{border-color:var(--teal)} .rg.win-1{border-color:var(--crimson)}
+.rg .crown{position:absolute;top:2px;right:2px;font-size:.8rem}
+.bigscore{display:flex;justify-content:space-around;align-items:center;text-align:center;margin:6px 0 12px}
+.bigscore .s{font-size:2.4rem;font-weight:800}
+.bigscore .me{color:var(--teal)} .bigscore .op{color:var(--crimson)}
+.bigscore .lbl{font-size:.8rem;color:var(--muted)}
+.winner-title{font-size:2rem;text-align:center;
+  background:linear-gradient(180deg,#fff3cf,#e8c46a);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* privacy shield (local pass-and-play) */
+#shield .sheet{text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center}
+#shield .big{font-size:1.6rem;color:var(--gold)}
+
+/* toast */
+#toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:50;
+  background:#0e1018ee;border:1px solid var(--gold-2);color:var(--text);padding:10px 16px;border-radius:10px;
+  font-size:.9rem;box-shadow:var(--shadow);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(4px)}
+
+/* rules list */
+.rules h3{color:var(--gold);margin:14px 0 4px;font-size:1.05rem}
+.rules p,.rules li{color:#ddd6c0;font-size:.92rem;line-height:1.5}
+.rules ul{margin:4px 0;padding-left:20px}
+.rules .tokrow{display:flex;gap:10px;align-items:flex-start;margin:6px 0}
+.rules .tokrow .tok{flex:none}
+
+/* confetti canvas */
+#confetti{position:fixed;inset:0;z-index:40;pointer-events:none}
+
+@media (max-width:430px){
+  .king .kname{display:none}
+  .tok{width:26px;height:26px;font-size:.8rem}
+}
+
+
+/* ---- round-end hidden card reveal ---- */
+.reveal-title{text-align:center;font-size:.9rem;color:var(--gold);margin-top:12px;font-weight:700}
+.reveal-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.reveal-box{position:relative;width:66px;border-radius:9px;overflow:hidden;border:2px solid #2c2a3e;
+  background:#0a0c12;box-shadow:0 4px 12px #00000077;display:flex;flex-direction:column}
+.reveal-box img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.reveal-box .rv-val{position:absolute;top:2px;left:2px;background:#000b;color:var(--gold);
+  font-size:.66rem;font-weight:800;border-radius:5px;padding:0 4px;border:1px solid var(--gold-2)}
+.reveal-box .rv-lbl{font-size:.6rem;text-align:center;padding:3px 2px;color:var(--text);background:#0e1018}
+.reveal-box.aside{border-color:#8a8a8a;opacity:.92}
+.reveal-box.aside .rv-lbl{color:#cfcfcf}
+.reveal-box.sec-0{border-color:var(--teal)}
+.reveal-box.sec-1{border-color:var(--crimson)}
+
+
+/* ---- destroyed pile (visible to both players) ---- */
+.destroy-zone{display:flex;flex-direction:column;align-items:center;gap:5px;margin:4px 0 2px;
+  background:#1a0e0eaa;border:1px solid #5a2a2a;border-radius:10px;padding:6px 10px}
+.dz-title{font-size:.74rem;color:#e08a8a;font-weight:700;letter-spacing:.3px}
+.dz-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.dz-card{position:relative;width:42px;border-radius:6px;overflow:hidden;border:1px solid #7a3a3a;
+  box-shadow:0 2px 6px #0008;filter:grayscale(.35) brightness(.85)}
+.dz-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.dz-card .dzv{position:absolute;top:1px;left:1px;background:#000c;color:var(--gold);
+  font-size:.6rem;font-weight:800;border-radius:4px;padding:0 3px}
+
+
+/* ---- fixed per-player identity colour: top stripe on the cards you hold ---- */
+.card.pc0::before,.card.pc1::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;z-index:4;
+  box-shadow:0 1px 4px #000a}
+.card.pc0::before{background:var(--teal)}
+.card.pc1::before{background:var(--crimson)}
+
+/* ---- two-name entry dialog (local 2-player) ---- */
+.field input.nameinput{font-size:1rem;letter-spacing:.5px;text-align:left;text-transform:none;font-weight:600}
+.field .pc-dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.field .pc-dot.p0{background:var(--teal)} .field .pc-dot.p1{background:var(--crimson)}
